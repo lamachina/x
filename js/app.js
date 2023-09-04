@@ -1140,7 +1140,7 @@ async function loadLatestOrders(limit = 100, nostrLimit = 100) {
         for (const orderObj of ordersArray) {
             const orderElement = document.createElement('a');
             orderElement.href = `/inscription.html?number=${orderObj.order.inscriptionId}`;
-            orderElement.target = `_blank`;
+            //orderElement.target = `_blank`;
 
             orderElement.classList.add('min-width-340'); // Add the class to the orderElement
 
