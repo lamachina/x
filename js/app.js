@@ -675,7 +675,7 @@ async function inscriptionPage() {
 
     document.getElementById('inscriptionId').value = inscription.id;
     //document.getElementById('owner').value = inscription.address;
-    document.getElementById('paymentAddress').value = inscription.address;
+    //document.getElementById('paymentAddress').value = inscription.address;
     document.getElementById('utxo').value = inscription.output;
 
     const utxoValue = satToBtc(inscription['output value'])
