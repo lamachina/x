@@ -46,7 +46,7 @@
     <script>   window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-PGT03XEJ4W'); </script>
 </head>
 
-<body>
+<body style="background-color: #000;">
     <header class="header-global">
         <nav id="navbar-main"
             class="navbar d-flex flex-row justify-content-center navbar-main navbar-expand-lg navbar-dark ">
@@ -72,7 +72,7 @@
     </header>
     <main>
         <!-- Section -->
-        <section class="min-vh-100 d-flex align-items-center bg-secondary">
+        <section class=" d-flex align-items-center bg-secondary" style="min-height: -webkit-fill-available">
             <div class="container">
                 <div class="column justify-content-center">
                     <div class="col-12 d-flex align-items-center justify-content-center">
@@ -104,10 +104,14 @@
                                             required />
                                     </div>
                                     <!-- End of Form -->
-                                    <button type="submit" id="btnBuyInscriptionNow" class="btn btn-block btn-tertiary"
-                                        style="display: none" onclick="buyInscriptionNow(); return false"></button>
-                                    <!--  <button type="submit" id="btnListInscriptionForSale"
+                                    <div class="d-flex justify-content-center w-100">
+
+                                        <button type="submit" id="btnBuyInscriptionNow" class="btn  btn-tertiary"
+                                            style="display: none" onclick="buyInscriptionNow(); return false"></button>
+                                        <!--  <button type="submit" id="btnListInscriptionForSale"
                                         class="btn btn-block btn-primary">List Inscription For Sale</button> -->
+                                    </div>
+
                                 </form>
                                 <div class="justify-content-center align-items-center text-center">
                                     <p class="font-weight-normal">

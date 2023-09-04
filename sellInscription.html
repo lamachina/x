@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
-    <link rel="canonical" href="https://openordex.org/">
+    <link rel="canonical" href="https://recursivepsyop.pro/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>OpenOrdex - Open Ordinals Decentralized Exchange</title>
-    <meta name="description" content="OpenOrdex is a Trustless Bitcoin NFT Marketplace">
+    <title>X - THE EVERYTHING BRC-20</title>
+    <meta name="description" content="X is a Trustless Bitcoin NFT Marketplace">
     <meta name="keywords"
         content="ordinals, bitcoin, nfts, nft, nft, btc, inscriptions, digital artifacts, marketplace" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://openordex.org/">
-    <meta property="og:title" content="OpenOrdex - Open Ordinals Decentralized Exchange">
+    <meta property="og:url" content="https://recursivepsyop.pro/">
+    <meta property="og:title" content="X - Open Ordinals Decentralized Exchange">
     <meta property="og:description"
-        content="OpenOrdex is an open source zero-fee trustless Bitcoin NFT marketplace based on partially signed bitcoin transactions">
-    <meta property="og:image" content="https://openordex.org/img/screenshot.png">
+        content="X is an open source zero-fee trustless Bitcoin NFT marketplace based on partially signed bitcoin transactions">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://openordex.org/">
-    <meta property="twitter:title" content="OpenOrdex - Open Ordinals Decentralized Exchange">
+    <meta property="twitter:url" content="https://recursivepsyop.pro/">
+    <meta property="twitter:title" content="X - Open Ordinals Decentralized Exchange">
     <meta property="twitter:description"
-        content="OpenOrdex is an open source zero-fee trustless Bitcoin NFT marketplace based on partially signed bitcoin transactions">
-    <meta property="twitter:image" content="https://openordex.org/img/screenshot.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+        content="X is an open source zero-fee trustless Bitcoin NFT marketplace based on partially signed bitcoin transactions">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="60x60" href="img/xlogo.png">
+    <link rel="icon" type="ico" sizes="32x32" href="img/xlogo.ico">
+    <link rel="icon" type="ico" sizes="16x16" href="img/xlogo.ico">
 
     <meta name="msapplication-TileColor" content="#2d89ef">
     <meta name="theme-color" content="#ffffff">
+
     <!-- Bootstrap CSS -->
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Site CSS -->
+    <!-- Pixel CSS -->
     <link type="text/css" rel="stylesheet" href="css/w95.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"
         integrity="sha512-AI5A3zIoeRSEEX9z3Vyir8NqSMC1pY7r5h2cE+9J6FLsoEmSSGLFaqMQw8SWvoONXogkfFrkQiJfLeHLz3+HOg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -78,7 +81,8 @@
                                 <span>Inscription #<span class="inscriptionNumber"></span></span>
                             </div>
                             <div class="card-body-2">
-                                <form action="#" class="mt-0 w-100" onsubmit="listInscriptionForSale(); return false;">
+                                <form action="#" class="mt-0 d-flex row w-100 align-items-start" style="gap: 3rem;"
+                                    onsubmit="listInscriptionForSale(); return false;">
                                     <iframe id="preview" sandbox=allow-scripts scrolling=no loading=lazy></iframe>
 
                                     <!-- Form -->
@@ -100,10 +104,14 @@
                                             required />
                                     </div>
                                     <!-- End of Form -->
-                                    <button type="submit" id="btnBuyInscriptionNow" class="btn btn-block btn-tertiary"
-                                        style="display: none" onclick="buyInscriptionNow(); return false"></button>
-                                    <!--  <button type="submit" id="btnListInscriptionForSale"
+                                    <div class="d-flex justify-content-center w-100">
+
+                                        <button type="submit" id="btnBuyInscriptionNow" class="btn  btn-tertiary"
+                                            style="display: none" onclick="buyInscriptionNow(); return false"></button>
+                                        <!--  <button type="submit" id="btnListInscriptionForSale"
                                         class="btn btn-block btn-primary">List Inscription For Sale</button> -->
+                                    </div>
+
                                 </form>
                                 <div class="justify-content-center align-items-center text-center">
                                     <p class="font-weight-normal">
@@ -117,96 +125,6 @@
                 </div>
             </div>
         </section>
-
-
-        <!-- List Dialog -->
-        <dialog id="listDialog" style="top:0; padding:0; background-color: transparent; border: 0">
-            <section class="min-vh-100 d-flex align-items-center" style="background-color: transparent;">
-                <div class="">
-                    <div class="row justify-content-center">
-                        <div class="col-12 d-flex align-items-center justify-content-center">
-                            <div class="card card-tertiary w-100 fmxw-400">
-                                <div class="card-header text-center">
-                                    <span>List Inscription For Sale</span>
-                                </div>
-                                <div class="card-body">
-                                    <form id="saleStep1" action="#" class="mt-0"
-                                        onsubmit="generateSalePsbt(); return false;">
-                                        <!-- Form -->
-                                        <div class="form-group">
-                                            <label for="price" class="mb-2">Price (in BTC)</label>
-                                            <input id="price" type="number" step="any" class="form-control"
-                                                placeholder="0.1" required />
-
-                                            <label for="paymentAddress" class="mb-2">Address to receive payment to
-                                                (default: current owner)</label>
-                                            <input id="paymentAddress" type="text" class="form-control" required />
-                                        </div>
-                                        <!-- End of Form -->
-                                        <button type="submit" class="btn btn-block btn-primary">Create a Partially
-                                            Signed Bitcoin
-                                            Transaction</button>
-                                    </form>
-
-                                    <form id="saleStep2" action="#" class="mt-0" onsubmit="return false;"
-                                        style="display: none;">
-                                        <!-- Form -->
-                                        <div class="form-group mb-2">
-                                            <label for="price" class="mb-2">Created PSBT for selling inscription
-                                                #<span class="inscriptionNumber"></span> for <span class="price"></span>
-                                                BTC:</label>
-                                            <textarea id="generatedSalePsbt" class="form-control"></textarea>
-                                        </div>
-                                        <p
-                                            class="justify-content-center align-items-center text-center font-weight-normal mb-2">
-                                            bitcoin-cli walletprocesspsbt "..." true "SINGLE|ANYONECANPAY"
-                                        </p>
-                                        <!-- End of Form -->
-                                        <button class="btn btn-secondary"
-                                            onclick="copyInput(this, 'generatedSalePsbt')">Copy PSBT</button>
-                                        <button class="btn btn-secondary mb-2" style="float: right"
-                                            onclick="downloadInput('generatedSalePsbt', `listInscription${inscriptionNumber}.psbt`)">Download
-                                            PSBT</button>
-                                        <button class="btn btn-block btn-secondary mb-2 btnsSignWithWallet"
-                                            style="clear: both; display: none"
-                                            onclick="signPSBTUsingWalletIntoInput('generatedSalePsbt', 'signedSalePsbt')">Sign
-                                            PSBT using <span class="walletName"></span> Wallet</button>
-                                        <div class="justify-content-center align-items-center text-center mt-4 walletSuggestions"
-                                            style="clear: both; display: none">
-                                            <p class="font-weight-normal">
-                                                Need a wallet to sign? Use <span class="walletsList"></span>
-                                            </p>
-                                        </div>
-
-                                        <hr class="my-2">
-
-                                        <div>
-                                            <label for="signedSalePsbt" class="mb-2">Sign the above and paste the signed
-                                                PSBT (or signed transaction) here:</label>
-                                            <textarea id="signedSalePsbt" class="form-control"></textarea>
-                                        </div>
-
-                                        <div class="form-group form-check">
-                                            <label class="form-check-label">
-                                                <input id="publicPsbt" class="form-check-input" type="checkbox"
-                                                    checked="">
-                                                <span class="form-check-x"></span>
-                                                <span class="form-check-sign"></span>
-                                                Publish PSBT to public decentralized order book
-                                            </label>
-                                        </div>
-
-                                        <button id="btnSubmitSignedSalePsbt" class="btn btn-block btn-primary mt-2"
-                                            onclick="submitSignedSalePsbt()">List
-                                            inscription for sale</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </dialog>
 
         <!-- Buy Dialog -->
         <dialog id="buyDialog" style="top:0; padding:0; background-color: transparent; border: 0">
