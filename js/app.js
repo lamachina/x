@@ -592,6 +592,7 @@ function satToBtc(sat) {
 }
 
 async function main() {
+
     bitcoinPrice = fetch(bitcoinPriceApiUrl)
         .then(response => response.json())
         .then(data => data.USD.last)

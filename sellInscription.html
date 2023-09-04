@@ -71,6 +71,15 @@
         </nav>
     </header>
     <main>
+
+        <div>
+            <form id="addressInputForm">
+                <label for="bitcoinAddress">Enter Bitcoin Address:</label>
+                <input type="text" id="bitcoinAddress" required>
+                <input type="submit" value="Fetch Inscriptions">
+            </form>
+
+        </div>
         <!-- Section -->
         <section class="min-vh-100 d-flex align-items-center bg-secondary">
             <div class="container">
@@ -225,6 +234,43 @@
             </section>
         </dialog>
     </main>
+    <script>
+
+        document.getElementById('addressInputForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const address = document.getElementById('bitcoinAddress').value;
+            const ticker = "x";  // set this to the required ticker value
+            const offset = 0;      // set the starting offset
+            const max = 500;       // max number of inscriptions to fetch
+
+            const transferHistoryList = trac.emit('get', {
+                func: 'accountTransferList',
+                args: [address, ticker, offset, max],
+                call_id: ''
+            })
+            console.log(transferHistoryList);
+            renderInscriptions(transferHistoryList)
+        });
+
+        function renderInscriptions(inscriptions) {
+            // Assuming each inscription in the list has the properties `id`, `utxo`, and `utxoValue`
+            const container = document.querySelector('.container .column');
+
+            inscriptions.forEach(inscription => {
+                const clone = document.querySelector('.card').cloneNode(true);
+
+                // Set the values for the fetched inscription
+                clone.querySelector('.inscriptionNumber').textContent = inscription.num;
+                clone.querySelector('#inscriptionId').value = inscription.ins;
+                clone.querySelector('#utxo').value = inscription.amt;
+
+                // Append the clone to the container
+                container.appendChild(clone);
+            });
+        }
+
+    </script>
     <script src="js/secp256k1.js"></script>
     <script type="module" src="js/bitcoinjs-lib.js"></script>
     <script type="module" src="js/connectjs-lib.js"></script>
