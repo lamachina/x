@@ -1112,10 +1112,14 @@ See transaction details on <a href="${baseMempoolUrl}/tx/${txId}" target="_blank
         }
     }
 }
+
 async function loadLatestOrders(limit = 100, nostrLimit = 100) {
     try {
         const ordersGenerator = getLatestOrders(limit, nostrLimit);
         const ordersArray = [];
+        const loadingText = document.getElementById('small-loadingtext');
+
+        let count = 0; // Add this to keep track of how many orders you've loaded
         for await (const order of ordersGenerator) {
             const content = await fetchContentFromUrl(`${ordinalsExplorerUrl}/content/${order.inscriptionId}`);
             if (content.includes("x") && content.includes("transfer")) {
@@ -1129,8 +1133,14 @@ async function loadLatestOrders(limit = 100, nostrLimit = 100) {
                     pricePerUnit: pricePerUnit,
                     contente: contente
                 });
+
+                // Update the loading text
+                count++;
+                loadingText.textContent = `Loaded ${count} out of ${limit} orders...`;
             }
         }
+        // If you wish to notify the user after loading is complete
+        loadingText.textContent = '';
 
         // Sort the orders by pricePerUnit
         ordersArray.sort((a, b) => a.pricePerUnit - b.pricePerUnit);
@@ -1144,7 +1154,6 @@ async function loadLatestOrders(limit = 100, nostrLimit = 100) {
             //orderElement.target = `_blank`;
 
             orderElement.classList.add('min-width-340'); // Add the class to the orderElement
-
 
             orderElement.innerHTML = `
             <div class="card card-tertiary w-100 fmxw-300">
