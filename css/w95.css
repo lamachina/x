@@ -3069,6 +3069,7 @@ button.section-white:focus {
     font-size: 15px;
     padding-left: 1rem;
     padding-right: 1rem;
+    border-color: #187ab6;
 }
 
 .btn-primary:hover {
@@ -7141,6 +7142,10 @@ a,
     color: #e7e9ea;
     font-weight: 400;
     text-decoration: none;
+}
+
+.titH {
+    font-weight: 700;
 }
 
 a:hover,
